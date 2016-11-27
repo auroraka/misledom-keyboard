@@ -7,6 +7,8 @@ NET "k_clk" LOC = U6;
 NET "k_data" LOC = V6;
 NET "clk_50" LOC = B9; # 50Mhz
 NET "rst" LOC = U10;
+NET "rdn_not" LOC = U9;#by hand
+
 
 NET "seg0[0]" LOC = C9;
 NET "seg0[1]" LOC = D9;
@@ -46,3 +48,6 @@ NET "data_out[0]" LOC = A12;
 #NET "datain_debug" LOC = E10;#1
 NET "data_ready_out" LOC = D10; #0
 
+
+# sw 
+NET "addr" LOC = T7; # 0

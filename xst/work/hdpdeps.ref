@@ -1,17 +1,17 @@
 V3 9
 FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd 2016/11/27.21:42:05 P.20131013
-EN work/keyboard 1480258471 \
+EN work/keyboard 1480261699 \
       FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177
-AR work/keyboard/rtl 1480258472 \
-      FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd EN work/keyboard 1480258471
-FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd 2016/11/27.22:54:18 P.20131013
-EN work/keyboard_ctrl 1480258473 \
+AR work/keyboard/rtl 1480261700 \
+      FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd EN work/keyboard 1480261699
+FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd 2016/11/27.23:46:38 P.20131013
+EN work/keyboard_ctrl 1480261701 \
       FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177
-AR work/keyboard_ctrl/bhv_keyboard_ctrl 1480258474 \
+AR work/keyboard_ctrl/bhv_keyboard_ctrl 1480261702 \
       FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd \
-      EN work/keyboard_ctrl 1480258473 CP work/keyboard CP keyboard_decoder \
+      EN work/keyboard_ctrl 1480261701 CP work/keyboard CP keyboard_decoder \
       CP seg_displayer

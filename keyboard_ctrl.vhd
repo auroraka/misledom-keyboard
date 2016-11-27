@@ -9,7 +9,8 @@ port(
 	k_clk : in std_logic;
 	clk_50 : in std_logic;
 	rst : in std_logic;
-	rdn : in std_logic;
+	addr : in std_logic;
+	rdn_not : in std_logic;
 	data_ready_out: out std_logic;
 	data_out:out std_logic_vector(7 downto 0);
 	seg0 : out std_logic_vector(6 downto 0)
@@ -33,6 +34,10 @@ component keyboard_decoder is
 	) ;
 end component ;
 
+--debug--
+signal rdn: std_logic;
+--end debug--
+
 type state_type  is (idle,press_one,press_two);
 signal kcode : std_logic_vector(7 downto 0); -- scancode recive from keyboard 
 signal kdata : std_logic_vector(3 downto 0); -- trans scancode to 0-F
@@ -40,12 +45,17 @@ signal fok:std_logic; -- key press
 signal state : state_type;
 signal store_data: std_logic_vector(7 downto 0); -- key press data
 signal k_data_ready : std_logic; -- when press to 0-F key and a SPACE key
-shared variable data_ready_signal :std_logic;
 signal rst_not : std_logic;
+type rdn_read_type is (idle,readed_data_ready,readed_data);
+signal read_state:rdn_read_type; 
 
 begin
 
-data_ready_out<=data_ready_signal;
+--debug--
+rdn<=not rdn_not;
+--end debug--
+
+--data_ready_out<=k_data_ready;
 data_out<=store_data;
 rst_not<=not rst;
 
@@ -101,16 +111,38 @@ begin
 	end if;
 end process;
 
---process(rst,k_data_ready,rdn) 
-process(rst,k_data_ready) 
+process (rst,rdn) 
 begin
-	if (rst = '1') then
-		data_ready_signal:='0';
-	elsif (falling_edge(rdn)) then
-		data_ready_signal:='0';
-	elsif (rising_edge(k_data_ready)) then
-		data_ready_signal:='1';
+	if (rst ='0') then
+		read_state<=idle;
+		data_ready_out<='0';
+	elsif falling_edge(rdn) then
+		if (k_data_ready ='0') then 
+			read_state<=idle;   -- [key point] , we assume keyboard is slow enough so the kernel will check data_ready when k_data_ready is '0'
+			data_ready_out<='0';
+		else -- if k_data_ready = '1' , it will continuse for a long time , but data_ready_out showed '1' only for the first read
+			case read_state is 
+				when idle =>
+					if (addr ='1') then
+						data_ready_out<=k_data_ready;
+						read_state <=readed_data_ready;
+					else 
+					end if;
+				when readed_data_ready =>
+					if (addr ='1') then
+						data_ready_out<=k_data_ready;
+					else 
+						read_state<=readed_data;
+					end if;
+				when readed_data =>
+					if (addr ='1') then
+						data_ready_out<='0';
+					else
+					end if;
+			end case;
+		end if;
 	end if;
+
 end process;
 
 end bhv_keyboard_ctrl;
