@@ -1,9 +1,1 @@
 xst -intstyle ise -ifn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.xst" -ofn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.syr" 
-xst -intstyle ise -ifn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.xst" -ofn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.syr" 
-xst -intstyle ise -ifn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.xst" -ofn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.syr" 
-ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc keyboard.ucf -p xc3s1200e-fg320-4 keyboard_ctrl.ngc keyboard_ctrl.ngd  
-xst -intstyle ise -ifn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.xst" -ofn "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.syr" 
-ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc keyboard.ucf -p xc3s1200e-fg320-4 keyboard_ctrl.ngc keyboard_ctrl.ngd  
-map -intstyle ise -p xc3s1200e-fg320-4 -cm area -ir off -pr off -c 100 -o keyboard_ctrl_map.ncd keyboard_ctrl.ngd keyboard_ctrl.pcf 
-par -w -intstyle ise -ol high -t 1 keyboard_ctrl_map.ncd keyboard_ctrl.ncd keyboard_ctrl.pcf 
-trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml keyboard_ctrl.twx keyboard_ctrl.ncd -o keyboard_ctrl.twr keyboard_ctrl.pcf -ucf keyboard.ucf 

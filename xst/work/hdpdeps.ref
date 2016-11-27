@@ -1,30 +1,17 @@
-V3 16
+V3 9
 FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd 2016/11/27.21:42:05 P.20131013
-EN work/Keyboard 1480256592 \
+EN work/keyboard 1480258471 \
       FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177
-AR work/Keyboard/rtl 1480256593 \
-      FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd EN work/Keyboard 1480256592
-FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd 2016/11/27.22:22:08 P.20131013
-EN work/keyboard_ctrl 1480256594 \
+AR work/keyboard/rtl 1480258472 \
+      FL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd EN work/keyboard 1480258471
+FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd 2016/11/27.22:54:18 P.20131013
+EN work/keyboard_ctrl 1480258473 \
       FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177
-AR work/keyboard_ctrl/bhv_keyboard_ctrl 1480256595 \
+AR work/keyboard_ctrl/bhv_keyboard_ctrl 1480258474 \
       FL C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd \
-      EN work/keyboard_ctrl 1480256594 CP work/keyboard CP keyboard_decoder \
+      EN work/keyboard_ctrl 1480258473 CP work/keyboard CP keyboard_decoder \
       CP seg_displayer
-FL C:/Users/ytl/Desktop/Misledom/keyboard/seg7.vhd 2016/11/27.13:40:17 P.20131013
-EN work/seg7 1480226259 FL C:/Users/ytl/Desktop/Misledom/keyboard/seg7.vhd \
-      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
-      PB ieee/std_logic_arith 1381692177
-AR work/seg7/behave 1480226260 \
-      FL C:/Users/ytl/Desktop/Misledom/keyboard/seg7.vhd EN work/seg7 1480226259
-FL C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd 2016/11/27.19:16:09 P.20131013
-EN work/top 1480245387 FL C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd \
-      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
-      PB ieee/std_logic_arith 1381692177
-AR work/top/behave 1480245388 \
-      FL C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd EN work/top 1480245387 \
-      CP Keyboard CP seg_displayer

@@ -40,7 +40,7 @@ signal fok:std_logic; -- key press
 signal state : state_type;
 signal store_data: std_logic_vector(7 downto 0); -- key press data
 signal k_data_ready : std_logic; -- when press to 0-F key and a SPACE key
-signal data_ready_signal :std_logic;
+shared variable data_ready_signal :std_logic;
 signal rst_not : std_logic;
 
 begin
@@ -105,11 +105,11 @@ end process;
 process(rst,k_data_ready) 
 begin
 	if (rst = '1') then
-		data_ready_signal<='0';
-	--elsif (falling_edge(rdn)) then
-	--	data_ready_signal<='0';
+		data_ready_signal:='0';
+	elsif (falling_edge(rdn)) then
+		data_ready_signal:='0';
 	elsif (rising_edge(k_data_ready)) then
-		data_ready_signal<='1';
+		data_ready_signal:='1';
 	end if;
 end process;
 
