@@ -1,0 +1,3 @@
+verilog work "seg_displayer.v"
+vhdl work "Keyboard.vhd"
+vhdl work "top.vhd"

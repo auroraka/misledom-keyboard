@@ -1,0 +1,461 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "top"
+Output Format                      : NGC
+Target Device                      : xc3s1200e-4-fg320
+
+---- Source Options
+Top Module Name                    : top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "seg_displayer.v" in library work
+Module <seg_displayer> compiled
+No errors in compilation
+Analysis of file <"top.prj"> succeeded.
+ 
+Compiling vhdl file "C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd" in Library work.
+Architecture rtl of Entity keyboard is up to date.
+Compiling vhdl file "C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd" in Library work.
+Architecture behave of Entity top is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <top> in library <work> (architecture <behave>).
+
+Analyzing hierarchy for entity <Keyboard> in library <work> (architecture <rtl>).
+
+Analyzing hierarchy for module <seg_displayer> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <top> in library <work> (Architecture <behave>).
+Entity <top> analyzed. Unit <top> generated.
+
+Analyzing Entity <Keyboard> in library <work> (Architecture <rtl>).
+Entity <Keyboard> analyzed. Unit <Keyboard> generated.
+
+Analyzing module <seg_displayer> in library <work>.
+Module <seg_displayer> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <Keyboard>.
+    Related source file is "C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 13                                             |
+    | Transitions        | 27                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 9                                              |
+    | Clock              | fclk                      (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | delay                                          |
+    | Power Up State     | delay                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 8-bit latch for signal <scancode>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit register for signal <clk1>.
+    Found 1-bit register for signal <clk2>.
+    Found 8-bit register for signal <code>.
+    Found 1-bit register for signal <data>.
+    Found 1-bit register for signal <fok>.
+    Found 1-bit xor9 for signal <state$xor0000> created at line 94.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  12 D-type flip-flop(s).
+	inferred   1 Xor(s).
+Unit <Keyboard> synthesized.
+
+
+Synthesizing Unit <seg_displayer>.
+    Related source file is "seg_displayer.v".
+Unit <seg_displayer> synthesized.
+
+
+Synthesizing Unit <top>.
+    Related source file is "C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd".
+WARNING:Xst:1780 - Signal <clk_f> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+Unit <top> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 12
+ 1-bit register                                        : 12
+# Latches                                              : 1
+ 8-bit latch                                           : 1
+# Xors                                                 : 1
+ 1-bit xor9                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <u0/state/FSM> on signal <state[1:4]> with gray encoding.
+--------------------
+ State  | Encoding
+--------------------
+ delay  | 0000
+ start  | 0001
+ d0     | 0011
+ d1     | 0010
+ d2     | 0110
+ d3     | 0111
+ d4     | 0101
+ d5     | 0100
+ d6     | 1100
+ d7     | 1101
+ parity | 1111
+ stop   | 1110
+ finish | 1010
+--------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Registers                                            : 12
+ Flip-Flops                                            : 12
+# Latches                                              : 1
+ 8-bit latch                                           : 1
+# Xors                                                 : 1
+ 1-bit xor9                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <top> ...
+
+Optimizing unit <Keyboard> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 16
+ Flip-Flops                                            : 16
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : top.ngr
+Top Level Output File Name         : top
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 22
+
+Cell Usage :
+# BELS                             : 56
+#      INV                         : 1
+#      LUT2                        : 3
+#      LUT2_D                      : 4
+#      LUT3                        : 5
+#      LUT4                        : 35
+#      LUT4_L                      : 5
+#      MUXF5                       : 3
+# FlipFlops/Latches                : 24
+#      FD                          : 3
+#      FDC                         : 5
+#      FDCE                        : 8
+#      LD                          : 8
+# Clock Buffers                    : 1
+#      BUFG                        : 1
+# IO Buffers                       : 22
+#      IBUF                        : 4
+#      OBUF                        : 18
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1200efg320-4 
+
+ Number of Slices:                       29  out of   8672     0%  
+ Number of Slice Flip Flops:             24  out of  17344     0%  
+ Number of 4 input LUTs:                 53  out of  17344     0%  
+ Number of IOs:                          22
+ Number of bonded IOBs:                  22  out of    250     8%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+u0/fok                             | NONE(u0/scancode_7)    | 8     |
+fclk                               | IBUF+BUFG              | 16    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst_in_debug_OBUF(rst1_INV_0:O)    | NONE(u0/code_0)        | 13    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 6.059ns (Maximum Frequency: 165.044MHz)
+   Minimum input arrival time before clock: 1.973ns
+   Maximum output required time after clock: 5.955ns
+   Maximum combinational path delay: 6.614ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fclk'
+  Clock period: 6.059ns (frequency: 165.044MHz)
+  Total number of paths / destination ports: 154 / 22
+-------------------------------------------------------------------------
+Delay:               6.059ns (Levels of Logic = 4)
+  Source:            u0/data (FF)
+  Destination:       u0/state_FSM_FFd1 (FF)
+  Source Clock:      fclk rising
+  Destination Clock: fclk rising
+
+  Data Path: u0/data to u0/state_FSM_FFd1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              13   0.591   1.018  u0/data (u0/data)
+     LUT3:I2->O            2   0.704   0.451  u0/Mxor_state_xor0000_xo<0>2 (u0/Mxor_state_xor0000_xo<0>2)
+     LUT4:I3->O            2   0.704   0.451  u0/Mxor_state_xor0000_xo<0>14 (u0/state_xor0000)
+     LUT4:I3->O            1   0.704   0.424  u0/state_FSM_FFd1-In8 (u0/state_FSM_FFd1-In8)
+     LUT4:I3->O            1   0.704   0.000  u0/state_FSM_FFd1-In58 (u0/state_FSM_FFd1-In)
+     FDC:D                     0.308          u0/state_FSM_FFd1
+    ----------------------------------------
+    Total                      6.059ns (3.715ns logic, 2.344ns route)
+                                       (61.3% logic, 38.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'fclk'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              1.973ns (Levels of Logic = 1)
+  Source:            datain (PAD)
+  Destination:       u0/data (FF)
+  Destination Clock: fclk rising
+
+  Data Path: datain to u0/data
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   1.218   0.447  datain_IBUF (datain_debug_OBUF)
+     FD:D                      0.308          u0/data
+    ----------------------------------------
+    Total                      1.973ns (1.526ns logic, 0.447ns route)
+                                       (77.3% logic, 22.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'u0/fok'
+  Total number of paths / destination ports: 56 / 14
+-------------------------------------------------------------------------
+Offset:              5.955ns (Levels of Logic = 2)
+  Source:            u0/scancode_3 (LATCH)
+  Destination:       seg0<6> (PAD)
+  Source Clock:      u0/fok falling
+
+  Data Path: u0/scancode_3 to seg0<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               7   0.676   0.883  u0/scancode_3 (u0/scancode_3)
+     LUT4:I0->O            1   0.704   0.420  u1/seg<2>1 (seg0_2_OBUF)
+     OBUF:I->O                 3.272          seg0_2_OBUF (seg0<2>)
+    ----------------------------------------
+    Total                      5.955ns (4.652ns logic, 1.303ns route)
+                                       (78.1% logic, 21.9% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Delay:               6.614ns (Levels of Logic = 3)
+  Source:            rst_in (PAD)
+  Destination:       rst_in_debug (PAD)
+
+  Data Path: rst_in to rst_in_debug
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.218   0.420  rst_in_IBUF (rst_in_IBUF)
+     INV:I->O             14   0.704   1.000  rst1_INV_0 (rst_in_debug_OBUF)
+     OBUF:I->O                 3.272          rst_in_debug_OBUF (rst_in_debug)
+    ----------------------------------------
+    Total                      6.614ns (5.194ns logic, 1.420ns route)
+                                       (78.5% logic, 21.5% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.92 secs
+ 
+--> 
+
+Total memory usage is 309856 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\ytl\Desktop\Misledom\keyboard\top.ncd
+OUTFILE=C:\Users\ytl\Desktop\Misledom\keyboard\top.bit
+FAMILY=Spartan3E
+PART=xc3s1200e-4fg320
+WORKINGDIR=C:\Users\ytl\Desktop\Misledom\keyboard
+LICENSE=WebPack
+USER_INFO=211257311_0_0_658
