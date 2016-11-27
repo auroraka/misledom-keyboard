@@ -1,7 +1,7 @@
-EN keyboard NULL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd sub00/vhpl00 1480227680
-MO seg_displayer NULL seg_displayer.v vlg17/seg__displayer.bin 1480227680
-AR top behave C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd sub00/vhpl05 1480227683
-EN top NULL C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd sub00/vhpl04 1480227682
+EN keyboard NULL C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd sub00/vhpl00 1480245385
+MO seg_displayer NULL seg_displayer.v vlg17/seg__displayer.bin 1480245385
+AR top behave C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd sub00/vhpl05 1480245388
+EN top NULL C:/Users/ytl/Desktop/Misledom/keyboard/top.vhd sub00/vhpl04 1480245387
 EN seg7 NULL C:/Users/ytl/Desktop/Misledom/keyboard/seg7.vhd sub00/vhpl02 1480226259
-AR keyboard rtl C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd sub00/vhpl01 1480227681
+AR keyboard rtl C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd sub00/vhpl01 1480245386
 AR seg7 behave C:/Users/ytl/Desktop/Misledom/keyboard/seg7.vhd sub00/vhpl03 1480226260

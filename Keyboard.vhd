@@ -3,22 +3,25 @@ use ieee.std_logic_1164.all;
 USE ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 
-entity Keyboard is
+entity keyboard is
 port (
 	datain, clkin : in std_logic ; -- PS2 clk and data
 	fclk, rst : in std_logic ;  -- filter clock
---	fok : out std_logic ;  -- data output enable signal
-	scancode : out std_logic_vector(7 downto 0) -- scan code signal output
-	) ;
-end Keyboard ;
+	scancode : out std_logic_vector(7 downto 0); -- scan code signal output
+	fok_out : out std_logic
+) ;
+end keyboard ;
 
-architecture rtl of Keyboard is
+architecture rtl of keyboard is
 type state_type is (delay, start, d0, d1, d2, d3, d4, d5, d6, d7, parity, stop, finish) ;
 signal data, clk, clk1, clk2, odd, fok : std_logic ; -- 毛刺处理内部信号, odd为奇偶校验
 signal code : std_logic_vector(7 downto 0) ; 
 signal state : state_type ;
+
+
 begin
 
+	fok_out<=fok;
 	clk1 <= clkin when rising_edge(fclk) ;
 	clk2 <= clk1 when rising_edge(fclk) ;
 	clk <= (not clk1) and clk2 ;

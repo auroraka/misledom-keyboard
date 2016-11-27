@@ -9,7 +9,7 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sun Nov 27 14:21:31 2016
+Mapped Date    : Sun Nov 27 19:16:36 2016
 
 Mapping design into LUTs...
 Running directed packing...

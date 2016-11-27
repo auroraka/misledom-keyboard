@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-YTL-PC::  Sun Nov 27 14:21:35 2016
+YTL-PC::  Sun Nov 27 19:16:40 2016
 
 par -w -intstyle ise -ol high -t 1 top_map.ncd top.ncd top.pcf 
 
@@ -90,10 +90,10 @@ Phase 8.5  Local Placement Optimization (Checksum:d6ee43c0) REAL time: 1 secs
 
 Phase 9.8  Global Placement
 ..
-Phase 9.8  Global Placement (Checksum:4401f43c) REAL time: 2 secs 
+Phase 9.8  Global Placement (Checksum:4401f43c) REAL time: 3 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:4401f43c) REAL time: 2 secs 
+Phase 10.5  Local Placement Optimization (Checksum:4401f43c) REAL time: 3 secs 
 
 Phase 11.18  Placement Optimization
 Phase 11.18  Placement Optimization (Checksum:5efb78a5) REAL time: 3 secs 
@@ -118,13 +118,13 @@ Phase  3  : 40 unrouted;      REAL time: 9 secs
 
 Phase  4  : 53 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 10 secs 
 
 Updating file: top.ncd with current fully routed design.
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 10 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 12 secs 
 
 Updating file: top.ncd with current fully routed design.
 

@@ -3,10 +3,10 @@
 #NET "clk_11_in" LOC = B8; # 11Mhz
 #NET "clk_50_in" LOC = B9; # 50Mhz
 
-NET "clkin" LOC = U6;
-NET "datain" LOC = V6;
-NET "fclk" LOC = B9; # 50Mhz
-NET "rst_in" LOC = U10;
+NET "k_clk" LOC = U6; 
+NET "k_data" LOC = V6;
+NET "clk_50" LOC = B9; # 50Mhz
+NET "rst" LOC = U10;
 
 NET "seg0[0]" LOC = C9;
 NET "seg0[1]" LOC = D9;
@@ -16,30 +16,31 @@ NET "seg0[4]" LOC = G9;
 NET "seg0[5]" LOC = A10;
 NET "seg0[6]" LOC = B10;
 
-NET "seg1[0]" LOC = C7;
-NET "seg1[1]" LOC = D7;
-NET "seg1[2]" LOC = E7;
-NET "seg1[3]" LOC = F7;
-NET "seg1[4]" LOC = A8;
-NET "seg1[5]" LOC = E8;
-NET "seg1[6]" LOC = F8;
+#NET "seg1[0]" LOC = C7;
+#NET "seg1[1]" LOC = D7;
+#NET "seg1[2]" LOC = E7;
+#NET "seg1[3]" LOC = F7;
+#NET "seg1[4]" LOC = A8;
+#NET "seg1[5]" LOC = E8;
+#NET "seg1[6]" LOC = F8;
 
 
 #LED
-#NET "pc_test[15]" LOC = A14;
-#NET "pc_test[14]" LOC = E13;
-#NET "pc_test[13]" LOC = D13;
-#NET "pc_test[12]" LOC = B13;
-#NET "pc_test[11]" LOC = A13;
-#NET "pc_test[10]" LOC = F12;
-#NET "pc_test[9]" LOC = E12;
-#NET "pc_test[8]" LOC = A12;
+NET "data_out[15]" LOC = A14;
+NET "data_out[14]" LOC = E13;
+NET "data_out[13]" LOC = D13;
+NET "data_out[12]" LOC = B13;
+NET "data_out[11]" LOC = A13;
+NET "data_out[10]" LOC = F12;
+NET "data_out[9]" LOC = E12;
+NET "data_out[8]" LOC = A12;
+
 #NET "pc_test[7]" LOC = F11;
 #NET "pc_test[6]" LOC = E11;
 #NET "pc_test[5]" LOC = D11;
 #NET "pc_test[4]" LOC = C11;
 #NET "pc_test[3]" LOC = B11;
-NET "rst_in_debug" LOC = A11;#2
-NET "datain_debug" LOC = E10;#1
-NET "clkin_debug" LOC = D10; #0
+#NET "rst_in_debug" LOC = A11;#2
+#NET "datain_debug" LOC = E10;#1
+NET "data_ready_out" LOC = D10; #0
 
