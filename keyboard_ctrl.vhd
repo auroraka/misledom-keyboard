@@ -11,11 +11,27 @@ port(
 	rst : in std_logic;
 	rdn : in std_logic;
 	data_ready_out: out std_logic;
-	data_out:out std_logic_vector(7 downto 0)
+	data_out:out std_logic_vector(7 downto 0);
+	seg0 : out std_logic_vector(6 downto 0)
 );
 end keyboard_ctrl;
 
 architecture bhv_keyboard_ctrl of keyboard_ctrl is
+
+component seg_displayer is
+	port(
+		isHex : in std_logic;
+		num : in std_logic_vector(3 downto 0);
+		seg: out std_logic_vector(6 downto 0)
+	) ;
+end component ;
+
+component keyboard_decoder is
+	port(
+		kcode : in std_logic_vector(7 downto 0);
+		kdata : out std_logic_vector(3 downto 0)
+	) ;
+end component ;
 
 type state_type  is (idle,press_one,press_two);
 signal kcode : std_logic_vector(7 downto 0); -- scancode recive from keyboard 
@@ -42,12 +58,15 @@ keyboard0: entity work.keyboard port map(
 	fok_out=>fok
 );
 
-keyboard_decoder0 : entity work.keyboard_decoder port map(
+keyboard_decoder0 : keyboard_decoder port map(
 	kcode=>kcode,
 	kdata=>kdata
 );
 
-seg_displayer0 : entity work.seg_displayer port map(
+seg_displayer0 : seg_displayer port map(
+	isHex =>'1',
+	num => kdata,
+	seg=>seg0
 );
 
 process(rst,fok)
@@ -82,12 +101,13 @@ begin
 	end if;
 end process;
 
-process(rst,k_data_ready,rdn) 
+--process(rst,k_data_ready,rdn) 
+process(rst,k_data_ready) 
 begin
 	if (rst = '1') then
 		data_ready_signal<='0';
-	elsif (falling_edge(rdn)) then
-		data_ready_signal<='0';
+	--elsif (falling_edge(rdn)) then
+	--	data_ready_signal<='0';
 	elsif (rising_edge(k_data_ready)) then
 		data_ready_signal<='1';
 	end if;

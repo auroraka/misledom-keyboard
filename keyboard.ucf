@@ -26,15 +26,17 @@ NET "seg0[6]" LOC = B10;
 
 
 #LED
-NET "data_out[15]" LOC = A14;
-NET "data_out[14]" LOC = E13;
-NET "data_out[13]" LOC = D13;
-NET "data_out[12]" LOC = B13;
-NET "data_out[11]" LOC = A13;
-NET "data_out[10]" LOC = F12;
-NET "data_out[9]" LOC = E12;
-NET "data_out[8]" LOC = A12;
+#led [15:8]
+NET "data_out[7]" LOC = A14;
+NET "data_out[6]" LOC = E13;
+NET "data_out[5]" LOC = D13;
+NET "data_out[4]" LOC = B13;
+NET "data_out[3]" LOC = A13;
+NET "data_out[2]" LOC = F12;
+NET "data_out[1]" LOC = E12;
+NET "data_out[0]" LOC = A12;
 
+#led [7:0]
 #NET "pc_test[7]" LOC = F11;
 #NET "pc_test[6]" LOC = E11;
 #NET "pc_test[5]" LOC = D11;

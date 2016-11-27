@@ -1,0 +1,550 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: keyboard_ctrl.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "keyboard_ctrl.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "keyboard_ctrl"
+Output Format                      : NGC
+Target Device                      : xc3s1200e-4-fg320
+
+---- Source Options
+Top Module Name                    : keyboard_ctrl
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "seg_displayer.v" in library work
+Compiling verilog file "keyboard_decoder.v" in library work
+Module <seg_displayer> compiled
+Module <keyboard_decoder> compiled
+No errors in compilation
+Analysis of file <"keyboard_ctrl.prj"> succeeded.
+ 
+Compiling vhdl file "C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd" in Library work.
+Architecture rtl of Entity keyboard is up to date.
+Compiling vhdl file "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd" in Library work.
+Entity <keyboard_ctrl> compiled.
+Entity <keyboard_ctrl> (Architecture <bhv_keyboard_ctrl>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <keyboard_ctrl> in library <work> (architecture <bhv_keyboard_ctrl>).
+
+Analyzing hierarchy for entity <keyboard> in library <work> (architecture <rtl>).
+
+Analyzing hierarchy for module <keyboard_decoder> in library <work>.
+
+Analyzing hierarchy for module <seg_displayer> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <keyboard_ctrl> in library <work> (Architecture <bhv_keyboard_ctrl>).
+Entity <keyboard_ctrl> analyzed. Unit <keyboard_ctrl> generated.
+
+Analyzing Entity <keyboard> in library <work> (Architecture <rtl>).
+Entity <keyboard> analyzed. Unit <keyboard> generated.
+
+Analyzing module <keyboard_decoder> in library <work>.
+Module <keyboard_decoder> is correct for synthesis.
+ 
+Analyzing module <seg_displayer> in library <work>.
+Module <seg_displayer> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <keyboard>.
+    Related source file is "C:/Users/ytl/Desktop/Misledom/keyboard/Keyboard.vhd".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 13                                             |
+    | Transitions        | 27                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 9                                              |
+    | Clock              | fclk                      (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | delay                                          |
+    | Power Up State     | delay                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 8-bit latch for signal <scancode>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit register for signal <clk1>.
+    Found 1-bit register for signal <clk2>.
+    Found 8-bit register for signal <code>.
+    Found 1-bit register for signal <data>.
+    Found 1-bit register for signal <fok>.
+    Found 1-bit xor9 for signal <state$xor0000> created at line 97.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  12 D-type flip-flop(s).
+	inferred   1 Xor(s).
+Unit <keyboard> synthesized.
+
+
+Synthesizing Unit <keyboard_decoder>.
+    Related source file is "keyboard_decoder.v".
+Unit <keyboard_decoder> synthesized.
+
+
+Synthesizing Unit <seg_displayer>.
+    Related source file is "seg_displayer.v".
+    Found 16x7-bit ROM for signal <seg>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <seg_displayer> synthesized.
+
+
+Synthesizing Unit <keyboard_ctrl>.
+    Related source file is "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd".
+WARNING:Xst:647 - Input <rdn> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 3                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 3                                              |
+    | Clock              | fok                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <data_ready_signal>.
+    Found 1-bit register for signal <k_data_ready>.
+    Found 8-bit register for signal <store_data>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  10 D-type flip-flop(s).
+Unit <keyboard_ctrl> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x7-bit ROM                                          : 1
+# Registers                                            : 22
+ 1-bit register                                        : 22
+# Latches                                              : 1
+ 8-bit latch                                           : 1
+# Xors                                                 : 1
+ 1-bit xor9                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <state/FSM> on signal <state[1:3]> with one-hot encoding.
+-----------------------
+ State     | Encoding
+-----------------------
+ idle      | 001
+ press_one | 010
+ press_two | 100
+-----------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <keyboard0/state/FSM> on signal <state[1:4]> with gray encoding.
+--------------------
+ State  | Encoding
+--------------------
+ delay  | 0000
+ start  | 0001
+ d0     | 0011
+ d1     | 0010
+ d2     | 0110
+ d3     | 0111
+ d4     | 0101
+ d5     | 0100
+ d6     | 1100
+ d7     | 1101
+ parity | 1111
+ stop   | 1110
+ finish | 1010
+--------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 2
+# ROMs                                                 : 1
+ 16x7-bit ROM                                          : 1
+# Registers                                            : 22
+ Flip-Flops                                            : 22
+# Latches                                              : 1
+ 8-bit latch                                           : 1
+# Xors                                                 : 1
+ 1-bit xor9                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <keyboard_ctrl> ...
+
+Optimizing unit <keyboard> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block keyboard_ctrl, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 29
+ Flip-Flops                                            : 29
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : keyboard_ctrl.ngr
+Top Level Output File Name         : keyboard_ctrl
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 21
+
+Cell Usage :
+# BELS                             : 94
+#      INV                         : 1
+#      LUT2                        : 9
+#      LUT2_L                      : 2
+#      LUT3                        : 6
+#      LUT3_D                      : 1
+#      LUT3_L                      : 1
+#      LUT4                        : 57
+#      LUT4_D                      : 7
+#      LUT4_L                      : 4
+#      MUXF5                       : 5
+#      VCC                         : 1
+# FlipFlops/Latches                : 37
+#      FD                          : 3
+#      FDC                         : 17
+#      FDCE                        : 8
+#      FDP                         : 1
+#      LD                          : 8
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 19
+#      IBUF                        : 3
+#      OBUF                        : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1200efg320-4 
+
+ Number of Slices:                       50  out of   8672     0%  
+ Number of Slice Flip Flops:             36  out of  17344     0%  
+ Number of 4 input LUTs:                 88  out of  17344     0%  
+ Number of IOs:                          21
+ Number of bonded IOBs:                  20  out of    250     8%  
+    IOB Flip Flops:                       1
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+keyboard0/fok1                     | BUFG                   | 20    |
+k_data_ready                       | NONE(data_ready_signal)| 1     |
+clk_50                             | BUFGP                  | 16    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst                                | IBUF                   | 13    |
+rst_not(rst_not1_INV_0:O)          | NONE(keyboard0/code_0) | 13    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 14.914ns (Maximum Frequency: 67.051MHz)
+   Minimum input arrival time before clock: 1.946ns
+   Maximum output required time after clock: 11.012ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'keyboard0/fok1'
+  Clock period: 14.914ns (frequency: 67.051MHz)
+  Total number of paths / destination ports: 374 / 12
+-------------------------------------------------------------------------
+Delay:               7.457ns (Levels of Logic = 5)
+  Source:            keyboard0/scancode_4 (LATCH)
+  Destination:       store_data_0 (FF)
+  Source Clock:      keyboard0/fok1 falling
+  Destination Clock: keyboard0/fok1 rising
+
+  Data Path: keyboard0/scancode_4 to store_data_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              16   0.676   1.209  keyboard0/scancode_4 (keyboard0/scancode_4)
+     LUT3_L:I0->LO         1   0.704   0.104  keyboard_decoder0/kdata<0>99 (keyboard_decoder0/kdata<0>99)
+     LUT4:I3->O            1   0.704   0.455  keyboard_decoder0/kdata<0>100 (keyboard_decoder0/kdata<0>100)
+     LUT4:I2->O            1   0.704   0.424  keyboard_decoder0/kdata<0>199_SW0 (N35)
+     LUT4_D:I3->O          8   0.704   0.761  keyboard_decoder0/kdata<0>199 (kdata<0>)
+     LUT4:I3->O            1   0.704   0.000  store_data_0_mux00001 (store_data_0_mux0000)
+     FDC:D                     0.308          store_data_0
+    ----------------------------------------
+    Total                      7.457ns (4.504ns logic, 2.953ns route)
+                                       (60.4% logic, 39.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_50'
+  Clock period: 7.221ns (frequency: 138.485MHz)
+  Total number of paths / destination ports: 134 / 22
+-------------------------------------------------------------------------
+Delay:               7.221ns (Levels of Logic = 5)
+  Source:            keyboard0/code_7 (FF)
+  Destination:       keyboard0/state_FSM_FFd1 (FF)
+  Source Clock:      clk_50 rising
+  Destination Clock: clk_50 rising
+
+  Data Path: keyboard0/code_7 to keyboard0/state_FSM_FFd1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             2   0.591   0.622  keyboard0/code_7 (keyboard0/code_7)
+     LUT2:I0->O            1   0.704   0.424  keyboard0/Mxor_state_xor0000_xo<0>3 (keyboard0/Mxor_state_xor0000_xo<0>3)
+     LUT4:I3->O            1   0.704   0.595  keyboard0/Mxor_state_xor0000_xo<0>6 (keyboard0/Mxor_state_xor0000_xo<0>6)
+     LUT2:I0->O            3   0.704   0.566  keyboard0/Mxor_state_xor0000_xo<0>13 (keyboard0/state_xor0000)
+     LUT4:I2->O            1   0.704   0.595  keyboard0/state_FSM_FFd1-In8 (keyboard0/state_FSM_FFd1-In8)
+     LUT4:I0->O            1   0.704   0.000  keyboard0/state_FSM_FFd1-In58 (keyboard0/state_FSM_FFd1-In)
+     FDC:D                     0.308          keyboard0/state_FSM_FFd1
+    ----------------------------------------
+    Total                      7.221ns (4.419ns logic, 2.802ns route)
+                                       (61.2% logic, 38.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_50'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              1.946ns (Levels of Logic = 1)
+  Source:            k_data (PAD)
+  Destination:       keyboard0/data (FF)
+  Destination Clock: clk_50 rising
+
+  Data Path: k_data to keyboard0/data
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.218   0.420  k_data_IBUF (k_data_IBUF)
+     FD:D                      0.308          keyboard0/data
+    ----------------------------------------
+    Total                      1.946ns (1.526ns logic, 0.420ns route)
+                                       (78.4% logic, 21.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'k_data_ready'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              4.283ns (Levels of Logic = 1)
+  Source:            data_ready_signal (FF)
+  Destination:       data_ready_out (PAD)
+  Source Clock:      k_data_ready rising
+
+  Data Path: data_ready_signal to data_ready_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              1   0.591   0.420  data_ready_signal (data_ready_signal)
+     OBUF:I->O                 3.272          data_ready_out_OBUF (data_ready_out)
+    ----------------------------------------
+    Total                      4.283ns (3.863ns logic, 0.420ns route)
+                                       (90.2% logic, 9.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'keyboard0/fok1'
+  Total number of paths / destination ports: 939 / 15
+-------------------------------------------------------------------------
+Offset:              11.012ns (Levels of Logic = 6)
+  Source:            keyboard0/scancode_4 (LATCH)
+  Destination:       seg0<5> (PAD)
+  Source Clock:      keyboard0/fok1 falling
+
+  Data Path: keyboard0/scancode_4 to seg0<5>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              16   0.676   1.209  keyboard0/scancode_4 (keyboard0/scancode_4)
+     LUT3_L:I0->LO         1   0.704   0.104  keyboard_decoder0/kdata<0>99 (keyboard_decoder0/kdata<0>99)
+     LUT4:I3->O            1   0.704   0.455  keyboard_decoder0/kdata<0>100 (keyboard_decoder0/kdata<0>100)
+     LUT4:I2->O            1   0.704   0.424  keyboard_decoder0/kdata<0>199_SW0 (N35)
+     LUT4_D:I3->O          8   0.704   0.932  keyboard_decoder0/kdata<0>199 (kdata<0>)
+     LUT4:I0->O            1   0.704   0.420  seg_displayer0/Mrom_seg41 (seg0_4_OBUF)
+     OBUF:I->O                 3.272          seg0_4_OBUF (seg0<4>)
+    ----------------------------------------
+    Total                     11.012ns (7.468ns logic, 3.544ns route)
+                                       (67.8% logic, 32.2% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.22 secs
+ 
+--> 
+
+Total memory usage is 309928 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

@@ -1,0 +1,4 @@
+verilog work "seg_displayer.v"
+verilog work "keyboard_decoder.v"
+vhdl work "Keyboard.vhd"
+vhdl work "keyboard_ctrl.vhd"
