@@ -39,10 +39,11 @@ component keyboard_decoder is
 	) ;
 end component ;
 
---debug--
+--[Debug]--
 signal count_debug: std_logic_vector(3 downto 0);
 signal rdn: std_logic;
---end debug--
+--[End Debug]--
+
 
 type state_type  is (idle,press_one,press_two);
 signal kcode : std_logic_vector(7 downto 0); -- scancode recive from keyboard 
@@ -58,7 +59,7 @@ signal read_state:rdn_read_type;
 
 begin
 
---debug--
+--[Debug]--
 rdn<=not rdn_not;
 k_data_ready_out<=k_data_ready;
 process(state)
@@ -78,11 +79,10 @@ begin
 		when readed_data => r_state_debug<="10";	
 	end case;
 end process;
+--[End dDbug]--
 
---end debug--
 
-
---data_out<=store_data;
+data_out<=store_data;
 --data_out<=kcode;
 rst_not<=not rst;
 
@@ -112,7 +112,7 @@ seg_displayer1 : seg_displayer port map(
 	seg=>seg1
 );
 
-process(rst,fok,kcode)
+process(rst,fok,kcode,kdata)
 variable cnt:integer:=0;
 variable store_data : std_logic_vector(7 downto 0);
 begin
@@ -126,7 +126,8 @@ begin
 	elsif (rising_edge(fok)) then
 		count_debug<=count_debug+1;
 		cnt:=cnt+1;
-		if (cnt=1) then
+		if (cnt=3) then
+			cnt:=0;
 			case state is 
 				when idle =>
 					store_data(7 downto 4):=kdata;
@@ -154,9 +155,6 @@ begin
 					k_data_ready<='0';
 					data_out<=store_data;
 			end case;
-		end if;
-		if (cnt =3) then
-			cnt:=0;
 		end if;
 	end if;
 end process;
