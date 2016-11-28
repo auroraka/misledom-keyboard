@@ -1,31 +1,43 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sun Nov 27 23:48:32 2016
+// Written by: Map P.20131013 on Mon Nov 28 01:38:25 2016
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "rst" LOCATE = SITE "U10" LEVEL 1;
+COMP "addr" LOCATE = SITE "T7" LEVEL 1;
+COMP "seg0<0>" LOCATE = SITE "C9" LEVEL 1;
+COMP "seg0<1>" LOCATE = SITE "D9" LEVEL 1;
+COMP "seg0<2>" LOCATE = SITE "E9" LEVEL 1;
+COMP "seg0<3>" LOCATE = SITE "F9" LEVEL 1;
+COMP "seg1<0>" LOCATE = SITE "C7" LEVEL 1;
 COMP "seg0<4>" LOCATE = SITE "G9" LEVEL 1;
-COMP "data_ready_out" LOCATE = SITE "D10" LEVEL 1;
+COMP "seg1<1>" LOCATE = SITE "D7" LEVEL 1;
 COMP "seg0<5>" LOCATE = SITE "A10" LEVEL 1;
+COMP "seg1<2>" LOCATE = SITE "E7" LEVEL 1;
 COMP "seg0<6>" LOCATE = SITE "B10" LEVEL 1;
-COMP "clk_50" LOCATE = SITE "B9" LEVEL 1;
-COMP "data_out<0>" LOCATE = SITE "A12" LEVEL 1;
-COMP "rdn_not" LOCATE = SITE "U9" LEVEL 1;
-COMP "data_out<1>" LOCATE = SITE "E12" LEVEL 1;
+COMP "seg1<3>" LOCATE = SITE "F7" LEVEL 1;
+COMP "seg1<4>" LOCATE = SITE "A8" LEVEL 1;
+COMP "seg1<5>" LOCATE = SITE "E8" LEVEL 1;
+COMP "seg1<6>" LOCATE = SITE "F8" LEVEL 1;
 COMP "k_clk" LOCATE = SITE "U6" LEVEL 1;
+COMP "r_state_debug<0>" LOCATE = SITE "B11" LEVEL 1;
+COMP "r_state_debug<1>" LOCATE = SITE "C11" LEVEL 1;
+COMP "rdn_not" LOCATE = SITE "U9" LEVEL 1;
+COMP "k_state_debug<0>" LOCATE = SITE "E10" LEVEL 1;
+COMP "k_state_debug<1>" LOCATE = SITE "A11" LEVEL 1;
+COMP "k_data_ready_out" LOCATE = SITE "D11" LEVEL 1;
+COMP "data_ready_out" LOCATE = SITE "D10" LEVEL 1;
+COMP "clk_50" LOCATE = SITE "B9" LEVEL 1;
+COMP "k_data" LOCATE = SITE "V6" LEVEL 1;
+COMP "data_out<0>" LOCATE = SITE "A12" LEVEL 1;
+COMP "data_out<1>" LOCATE = SITE "E12" LEVEL 1;
 COMP "data_out<2>" LOCATE = SITE "F12" LEVEL 1;
 COMP "data_out<3>" LOCATE = SITE "A13" LEVEL 1;
 COMP "data_out<4>" LOCATE = SITE "B13" LEVEL 1;
 COMP "data_out<5>" LOCATE = SITE "D13" LEVEL 1;
 COMP "data_out<6>" LOCATE = SITE "E13" LEVEL 1;
 COMP "data_out<7>" LOCATE = SITE "A14" LEVEL 1;
-COMP "addr" LOCATE = SITE "T7" LEVEL 1;
-COMP "seg0<0>" LOCATE = SITE "C9" LEVEL 1;
-COMP "rst" LOCATE = SITE "U10" LEVEL 1;
-COMP "seg0<1>" LOCATE = SITE "D9" LEVEL 1;
-COMP "seg0<2>" LOCATE = SITE "E9" LEVEL 1;
-COMP "k_data" LOCATE = SITE "V6" LEVEL 1;
-COMP "seg0<3>" LOCATE = SITE "F9" LEVEL 1;
-NET "clk_50_BUFGP/IBUFG" BEL "clk_50_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 NET "rdn_not_BUFGP/IBUFG" BEL "rdn_not_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+NET "clk_50_BUFGP/IBUFG" BEL "clk_50_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 SCHEMATIC END;
 

@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 USE ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
+use IEEE.NUMERIC_STD.all;
 
 entity keyboard_ctrl is
 port(
@@ -10,10 +11,14 @@ port(
 	clk_50 : in std_logic;
 	rst : in std_logic;
 	addr : in std_logic;
-	rdn_not : in std_logic;
+	rdn_not : in std_logic; -- debug
 	data_ready_out: out std_logic;
+	k_data_ready_out: out std_logic; -- debug
 	data_out:out std_logic_vector(7 downto 0);
-	seg0 : out std_logic_vector(6 downto 0)
+	seg0 : out std_logic_vector(6 downto 0); -- debug
+	seg1 : out std_logic_vector(6 downto 0); -- debug
+	k_state_debug : out std_logic_vector(1 downto 0);
+	r_state_debug : out std_logic_vector(1 downto 0)
 );
 end keyboard_ctrl;
 
@@ -35,6 +40,7 @@ component keyboard_decoder is
 end component ;
 
 --debug--
+signal count_debug: std_logic_vector(3 downto 0);
 signal rdn: std_logic;
 --end debug--
 
@@ -49,14 +55,35 @@ signal rst_not : std_logic;
 type rdn_read_type is (idle,readed_data_ready,readed_data);
 signal read_state:rdn_read_type; 
 
+
 begin
 
 --debug--
 rdn<=not rdn_not;
+k_data_ready_out<=k_data_ready;
+process(state)
+begin
+	case state is 
+		when idle => k_state_debug<="11";
+		when press_one => k_state_debug<="01";
+		when press_two => k_state_debug<="10";		
+	end case;
+end process;
+
+process(read_state)
+begin
+	case read_state is 
+		when idle => r_state_debug<="11";
+		when readed_data_ready => r_state_debug<="01";
+		when readed_data => r_state_debug<="10";	
+	end case;
+end process;
+
 --end debug--
 
---data_ready_out<=k_data_ready;
-data_out<=store_data;
+
+--data_out<=store_data;
+--data_out<=kcode;
 rst_not<=not rst;
 
 keyboard0: entity work.keyboard port map(
@@ -79,35 +106,58 @@ seg_displayer0 : seg_displayer port map(
 	seg=>seg0
 );
 
-process(rst,fok)
+seg_displayer1 : seg_displayer port map(
+	isHex =>'1',
+	num => count_debug,
+	seg=>seg1
+);
+
+process(rst,fok,kcode)
+variable cnt:integer:=0;
+variable store_data : std_logic_vector(7 downto 0);
 begin
-	if (rst = '1') then
+	if (rst = '0') then
 		state<=idle;
-		store_data<="00000000";
+		store_data:="00000000";
 		k_data_ready<='0';
+		cnt:=0;
+		count_debug<="0000";
+		data_out<=store_data;
 	elsif (rising_edge(fok)) then
-		case state is 
-			when idle =>
-				store_data(7 downto 4)<=kdata;
-				state<=press_one;
-				k_data_ready<='0';
-			when press_one =>
-				store_data(3 downto 0)<=kdata;
-				state<=press_two;
-				k_data_ready<='0';
-			when press_two =>
-				if (kcode="00101001") then--0x29 Space
-					k_data_ready<='1';
-				else
-					store_data<="00000000";
+		count_debug<=count_debug+1;
+		cnt:=cnt+1;
+		if (cnt=1) then
+			case state is 
+				when idle =>
+					store_data(7 downto 4):=kdata;
+					state<=press_one;
 					k_data_ready<='0';
-				end if;
-				state<=idle;
-			when others =>
-				store_data<="00000000";
-				state<=idle;
-				k_data_ready<='0';
-		end case;
+					data_out<=store_data;
+				when press_one =>
+					store_data(3 downto 0):=kdata;
+					state<=press_two;
+					k_data_ready<='0';
+					data_out<=store_data;
+				when press_two =>
+					if (kcode="00101001") then--0x29 Space
+						k_data_ready<='1';
+					else
+						store_data:=kcode;
+						k_data_ready<='0';
+					end if;
+					data_out<=store_data;
+				    --k_data_ready<='1';
+					state<=idle;
+				when others =>
+					store_data:="00000000";
+					state<=idle;
+					k_data_ready<='0';
+					data_out<=store_data;
+			end case;
+		end if;
+		if (cnt =3) then
+			cnt:=0;
+		end if;
 	end if;
 end process;
 

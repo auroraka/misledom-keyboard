@@ -20,7 +20,7 @@ signal state : state_type ;
 
 
 begin
-
+	
 	fok_out<=fok;
 	clk1 <= clkin when rising_edge(fclk) ;
 	clk2 <= clk1 when rising_edge(fclk) ;

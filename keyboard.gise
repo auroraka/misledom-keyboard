@@ -23,13 +23,17 @@
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/bitgen.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/par.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="keyboard_ctrl.bgn" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BIT" xil_pn:name="keyboard_ctrl.bit" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="keyboard_ctrl.bld"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="keyboard_ctrl.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_DRC" xil_pn:name="keyboard_ctrl.drc" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="keyboard_ctrl.lso"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="keyboard_ctrl.ncd" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="keyboard_ctrl.ngc"/>
@@ -45,6 +49,7 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="keyboard_ctrl.twr" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="keyboard_ctrl.twx" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="keyboard_ctrl.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="keyboard_ctrl.ut" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:fileType="FILE_XPI" xil_pn:name="keyboard_ctrl.xpi"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="keyboard_ctrl.xst"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="keyboard_ctrl_envsettings.html"/>
@@ -64,6 +69,8 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="keyboard_ctrl_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="keyboard_ctrl_xst.xrpt"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="top_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="usage_statistics_webtalk.html"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="webtalk.log"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
@@ -94,7 +101,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1480261705" xil_pn:in_ck="4412808468307794639" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="9010243985457421410" xil_pn:start_ts="1480261697">
+    <transform xil_pn:end_ts="1480268299" xil_pn:in_ck="4412808468307794639" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="9010243985457421410" xil_pn:start_ts="1480268290">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -113,11 +120,11 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1480261705" xil_pn:in_ck="5568453352639076925" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="2329137615896308836" xil_pn:start_ts="1480261705">
+    <transform xil_pn:end_ts="1480266054" xil_pn:in_ck="5568453352639076925" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="2329137615896308836" xil_pn:start_ts="1480266054">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1480261710" xil_pn:in_ck="-8685348910180888728" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="6446009494145177906" xil_pn:start_ts="1480261705">
+    <transform xil_pn:end_ts="1480268303" xil_pn:in_ck="-8685348910180888728" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="6446009494145177906" xil_pn:start_ts="1480268299">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_ngo"/>
@@ -126,7 +133,7 @@
       <outfile xil_pn:name="keyboard_ctrl.ngd"/>
       <outfile xil_pn:name="keyboard_ctrl_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1480261714" xil_pn:in_ck="-8685348910180888727" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="3188416950630775481" xil_pn:start_ts="1480261710">
+    <transform xil_pn:end_ts="1480268307" xil_pn:in_ck="-8685348910180888727" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="3188416950630775481" xil_pn:start_ts="1480268303">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
@@ -139,7 +146,7 @@
       <outfile xil_pn:name="keyboard_ctrl_summary.xml"/>
       <outfile xil_pn:name="keyboard_ctrl_usage.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1480261731" xil_pn:in_ck="7717016806808349442" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="6268780068511726196" xil_pn:start_ts="1480261714">
+    <transform xil_pn:end_ts="1480268326" xil_pn:in_ck="7717016806808349442" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="6268780068511726196" xil_pn:start_ts="1480268307">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
@@ -153,7 +160,23 @@
       <outfile xil_pn:name="keyboard_ctrl_pad.txt"/>
       <outfile xil_pn:name="keyboard_ctrl_par.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1480261731" xil_pn:in_ck="-8685348910180888859" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1480261728">
+    <transform xil_pn:end_ts="1480268336" xil_pn:in_ck="-7576285770610666744" xil_pn:name="TRANEXT_bitFile_spartan3e" xil_pn:prop_ck="-7817169320884990698" xil_pn:start_ts="1480268326">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+      <outfile xil_pn:name="keyboard_ctrl.bgn"/>
+      <outfile xil_pn:name="keyboard_ctrl.bit"/>
+      <outfile xil_pn:name="keyboard_ctrl.drc"/>
+      <outfile xil_pn:name="keyboard_ctrl.ut"/>
+      <outfile xil_pn:name="usage_statistics_webtalk.html"/>
+      <outfile xil_pn:name="webtalk.log"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1480268339" xil_pn:in_ck="-7576285770610679598" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="5582947192412673156" xil_pn:start_ts="1480268336">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1480268326" xil_pn:in_ck="-8685348910180888859" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1480268323">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>

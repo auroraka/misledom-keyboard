@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: keyboard_ctrl.prj
 
@@ -188,20 +188,18 @@ Unit <keyboard_decoder> synthesized.
 
 Synthesizing Unit <seg_displayer>.
     Related source file is "seg_displayer.v".
-    Found 16x7-bit ROM for signal <seg>.
-    Summary:
-	inferred   1 ROM(s).
 Unit <seg_displayer> synthesized.
 
 
 Synthesizing Unit <keyboard_ctrl>.
     Related source file is "C:/Users/ytl/Desktop/Misledom/keyboard/keyboard_ctrl.vhd".
+WARNING:Xst:1780 - Signal <store_data> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_1> for signal <read_state>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
     | Transitions        | 8                                              |
     | Inputs             | 2                                              |
-    | Outputs            | 3                                              |
+    | Outputs            | 5                                              |
     | Clock              | rdn                       (falling_edge)       |
     | Reset              | rst                       (negative)           |
     | Reset type         | asynchronous                                   |
@@ -215,9 +213,10 @@ Synthesizing Unit <keyboard_ctrl>.
     | States             | 3                                              |
     | Transitions        | 3                                              |
     | Inputs             | 0                                              |
-    | Outputs            | 3                                              |
+    | Outputs            | 5                                              |
     | Clock              | fok                       (rising_edge)        |
-    | Reset              | rst                       (positive)           |
+    | Clock enable       | state$cmp_eq0000          (positive)           |
+    | Reset              | rst                       (negative)           |
     | Reset type         | asynchronous                                   |
     | Reset State        | idle                                           |
     | Power Up State     | idle                                           |
@@ -225,11 +224,17 @@ Synthesizing Unit <keyboard_ctrl>.
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
     Found 1-bit register for signal <data_ready_out>.
+    Found 8-bit register for signal <data_out>.
+    Found 32-bit up counter for signal <cnt>.
+    Found 4-bit up counter for signal <count_debug>.
     Found 1-bit register for signal <k_data_ready>.
-    Found 8-bit register for signal <store_data>.
+    Found 32-bit adder for signal <state$add0000> created at line 128.
+    Found 8-bit register for signal <store_data0>.
     Summary:
 	inferred   2 Finite State Machine(s).
-	inferred  10 D-type flip-flop(s).
+	inferred   2 Counter(s).
+	inferred  18 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
 Unit <keyboard_ctrl> synthesized.
 
 
@@ -237,10 +242,14 @@ Unit <keyboard_ctrl> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# ROMs                                                 : 1
- 16x7-bit ROM                                          : 1
-# Registers                                            : 22
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Counters                                             : 2
+ 32-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 23
  1-bit register                                        : 22
+ 8-bit register                                        : 1
 # Latches                                              : 1
  8-bit latch                                           : 1
 # Xors                                                 : 1
@@ -295,10 +304,13 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # FSMs                                                 : 3
-# ROMs                                                 : 1
- 16x7-bit ROM                                          : 1
-# Registers                                            : 22
- Flip-Flops                                            : 22
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Counters                                             : 2
+ 32-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 30
+ Flip-Flops                                            : 30
 # Latches                                              : 1
  8-bit latch                                           : 1
 # Xors                                                 : 1
@@ -316,7 +328,10 @@ Optimizing unit <keyboard> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block keyboard_ctrl, actual ratio is 0.
+Found area constraint ratio of 100 (+ 5) on block keyboard_ctrl, actual ratio is 1.
+Latch keyboard0/scancode_2 has been replicated 1 time(s)
+Latch keyboard0/scancode_3 has been replicated 1 time(s)
+Latch keyboard0/scancode_4 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -324,8 +339,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 31
- Flip-Flops                                            : 31
+# Registers                                            : 75
+ Flip-Flops                                            : 75
 
 =========================================================================
 
@@ -351,33 +366,37 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 22
+# IOs                              : 34
 
 Cell Usage :
-# BELS                             : 99
-#      INV                         : 2
-#      LUT2                        : 8
-#      LUT2_L                      : 2
-#      LUT3                        : 10
-#      LUT3_D                      : 1
-#      LUT3_L                      : 1
-#      LUT4                        : 57
-#      LUT4_D                      : 7
-#      LUT4_L                      : 5
-#      MUXF5                       : 6
-# FlipFlops/Latches                : 39
+# BELS                             : 414
+#      GND                         : 1
+#      INV                         : 9
+#      LUT1                        : 62
+#      LUT2                        : 21
+#      LUT3                        : 61
+#      LUT3_D                      : 2
+#      LUT3_L                      : 3
+#      LUT4                        : 94
+#      LUT4_D                      : 4
+#      LUT4_L                      : 13
+#      MUXCY                       : 70
+#      MUXF5                       : 9
+#      VCC                         : 1
+#      XORCY                       : 64
+# FlipFlops/Latches                : 86
 #      FD                          : 3
-#      FDC                         : 16
+#      FDC                         : 41
 #      FDC_1                       : 3
-#      FDCE                        : 8
-#      FDP                         : 1
-#      LD                          : 8
+#      FDCE                        : 27
+#      FDPE                        : 1
+#      LD                          : 11
 # Clock Buffers                    : 3
 #      BUFG                        : 1
 #      BUFGP                       : 2
-# IO Buffers                       : 20
+# IO Buffers                       : 32
 #      IBUF                        : 4
-#      OBUF                        : 16
+#      OBUF                        : 28
 =========================================================================
 
 Device utilization summary:
@@ -385,11 +404,11 @@ Device utilization summary:
 
 Selected Device : 3s1200efg320-4 
 
- Number of Slices:                       52  out of   8672     0%  
- Number of Slice Flip Flops:             39  out of  17344     0%  
- Number of 4 input LUTs:                 93  out of  17344     0%  
- Number of IOs:                          22
- Number of bonded IOBs:                  22  out of    250     8%  
+ Number of Slices:                      138  out of   8672     1%  
+ Number of Slice Flip Flops:             86  out of  17344     0%  
+ Number of 4 input LUTs:                269  out of  17344     1%  
+ Number of IOs:                          34
+ Number of bonded IOBs:                  34  out of    250    13%  
  Number of GCLKs:                         3  out of     24    12%  
 
 ---------------------------
@@ -414,7 +433,7 @@ Clock Information:
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
 rdn_not                            | BUFGP                  | 3     |
-keyboard0/fok1                     | BUFG                   | 20    |
+keyboard0/fok1                     | BUFG                   | 67    |
 clk_50                             | BUFGP                  | 16    |
 -----------------------------------+------------------------+-------+
 
@@ -423,17 +442,16 @@ Asynchronous Control Signals Information:
 -----------------------------------------------------------------+------------------------+-------+
 Control Signal                                                   | Buffer(FF name)        | Load  |
 -----------------------------------------------------------------+------------------------+-------+
-read_state_FSM_Acst_FSM_inv(read_state_FSM_Acst_FSM_inv1_INV_0:O)| NONE(data_ready_out)   | 16    |
-rst                                                              | IBUF                   | 12    |
+read_state_FSM_Acst_FSM_inv(read_state_FSM_Acst_FSM_inv1_INV_0:O)| NONE(cnt_0)            | 72    |
 -----------------------------------------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 14.914ns (Maximum Frequency: 67.051MHz)
+   Minimum period: 14.470ns (Maximum Frequency: 69.108MHz)
    Minimum input arrival time before clock: 3.217ns
-   Maximum output required time after clock: 11.012ns
+   Maximum output required time after clock: 11.844ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -442,59 +460,59 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'rdn_not'
-  Clock period: 2.630ns (frequency: 380.228MHz)
+  Clock period: 2.515ns (frequency: 397.614MHz)
   Total number of paths / destination ports: 7 / 3
 -------------------------------------------------------------------------
-Delay:               2.630ns (Levels of Logic = 2)
-  Source:            data_ready_out (FF)
+Delay:               2.515ns (Levels of Logic = 2)
+  Source:            read_state_FSM_FFd1 (FF)
   Destination:       data_ready_out (FF)
   Source Clock:      rdn_not rising
   Destination Clock: rdn_not rising
 
-  Data Path: data_ready_out to data_ready_out
+  Data Path: read_state_FSM_FFd1 to data_ready_out
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC_1:C->Q            3   0.591   0.706  data_ready_out (data_ready_out_OBUF)
-     LUT3:I0->O            1   0.704   0.000  data_ready_out_mux00001 (data_ready_out_mux00001)
-     MUXF5:I1->O           1   0.321   0.000  data_ready_out_mux0000_f5 (data_ready_out_mux0000)
+     FDC_1:C->Q            4   0.591   0.591  read_state_FSM_FFd1 (read_state_FSM_FFd1)
+     LUT4:I3->O            1   0.704   0.000  data_ready_out_mux00002 (data_ready_out_mux00002)
+     MUXF5:I0->O           1   0.321   0.000  data_ready_out_mux0000_f5 (data_ready_out_mux0000)
      FDC_1:D                   0.308          data_ready_out
     ----------------------------------------
-    Total                      2.630ns (1.924ns logic, 0.706ns route)
-                                       (73.2% logic, 26.8% route)
+    Total                      2.515ns (1.924ns logic, 0.591ns route)
+                                       (76.5% logic, 23.5% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'keyboard0/fok1'
-  Clock period: 14.914ns (frequency: 67.051MHz)
-  Total number of paths / destination ports: 374 / 12
+  Clock period: 14.470ns (frequency: 69.108MHz)
+  Total number of paths / destination ports: 28819 / 76
 -------------------------------------------------------------------------
-Delay:               7.457ns (Levels of Logic = 5)
-  Source:            keyboard0/scancode_4 (LATCH)
-  Destination:       store_data_0 (FF)
+Delay:               7.235ns (Levels of Logic = 5)
+  Source:            keyboard0/scancode_6 (LATCH)
+  Destination:       store_data0_0 (FF)
   Source Clock:      keyboard0/fok1 falling
   Destination Clock: keyboard0/fok1 rising
 
-  Data Path: keyboard0/scancode_4 to store_data_0
+  Data Path: keyboard0/scancode_6 to store_data0_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              16   0.676   1.209  keyboard0/scancode_4 (keyboard0/scancode_4)
-     LUT3_L:I0->LO         1   0.704   0.104  keyboard_decoder0/kdata<0>99 (keyboard_decoder0/kdata<0>99)
-     LUT4:I3->O            1   0.704   0.455  keyboard_decoder0/kdata<0>100 (keyboard_decoder0/kdata<0>100)
-     LUT4:I2->O            1   0.704   0.424  keyboard_decoder0/kdata<0>199_SW0 (N37)
-     LUT4_D:I3->O          8   0.704   0.761  keyboard_decoder0/kdata<0>199 (kdata<0>)
-     LUT4:I3->O            1   0.704   0.000  store_data_0_mux00001 (store_data_0_mux0000)
-     FDC:D                     0.308          store_data_0
+     LD:G->Q              18   0.676   1.243  keyboard0/scancode_6 (keyboard0/scancode_6)
+     LUT4:I0->O            1   0.704   0.455  keyboard_decoder0/kdata<1>11_SW3 (N75)
+     LUT4:I2->O           10   0.704   0.961  data_out_mux0000<0>11 (N16)
+     LUT3:I1->O            1   0.704   0.000  store_data0_0_mux000011_SW0_SW0_SW0_SW0_G (N141)
+     MUXF5:I1->O           1   0.321   0.455  store_data0_0_mux000011_SW0_SW0_SW0_SW0 (N811)
+     LUT3:I2->O            1   0.704   0.000  store_data0_0_mux000011 (store_data0_0_mux0000)
+     FDCE:D                    0.308          store_data0_0
     ----------------------------------------
-    Total                      7.457ns (4.504ns logic, 2.953ns route)
-                                       (60.4% logic, 39.6% route)
+    Total                      7.235ns (4.121ns logic, 3.114ns route)
+                                       (57.0% logic, 43.0% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_50'
-  Clock period: 7.221ns (frequency: 138.485MHz)
+  Clock period: 7.081ns (frequency: 141.223MHz)
   Total number of paths / destination ports: 134 / 22
 -------------------------------------------------------------------------
-Delay:               7.221ns (Levels of Logic = 5)
+Delay:               7.081ns (Levels of Logic = 5)
   Source:            keyboard0/code_7 (FF)
   Destination:       keyboard0/state_FSM_FFd1 (FF)
   Source Clock:      clk_50 rising
@@ -508,12 +526,12 @@ Delay:               7.221ns (Levels of Logic = 5)
      LUT2:I0->O            1   0.704   0.424  keyboard0/Mxor_state_xor0000_xo<0>3 (keyboard0/Mxor_state_xor0000_xo<0>3)
      LUT4:I3->O            1   0.704   0.595  keyboard0/Mxor_state_xor0000_xo<0>6 (keyboard0/Mxor_state_xor0000_xo<0>6)
      LUT2:I0->O            3   0.704   0.566  keyboard0/Mxor_state_xor0000_xo<0>13 (keyboard0/state_xor0000)
-     LUT4:I2->O            1   0.704   0.595  keyboard0/state_FSM_FFd1-In8 (keyboard0/state_FSM_FFd1-In8)
-     LUT4:I0->O            1   0.704   0.000  keyboard0/state_FSM_FFd1-In58 (keyboard0/state_FSM_FFd1-In)
+     LUT4:I2->O            1   0.704   0.455  keyboard0/state_FSM_FFd1-In8 (keyboard0/state_FSM_FFd1-In8)
+     LUT4:I2->O            1   0.704   0.000  keyboard0/state_FSM_FFd1-In58 (keyboard0/state_FSM_FFd1-In)
      FDC:D                     0.308          keyboard0/state_FSM_FFd1
     ----------------------------------------
-    Total                      7.221ns (4.419ns logic, 2.802ns route)
-                                       (61.2% logic, 38.8% route)
+    Total                      7.081ns (4.419ns logic, 2.662ns route)
+                                       (62.4% logic, 37.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'rdn_not'
@@ -529,8 +547,8 @@ Offset:              3.217ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             4   1.218   0.666  addr_IBUF (addr_IBUF)
-     LUT4:I1->O            1   0.704   0.000  data_ready_out_mux00002 (data_ready_out_mux00002)
-     MUXF5:I0->O           1   0.321   0.000  data_ready_out_mux0000_f5 (data_ready_out_mux0000)
+     LUT3:I1->O            1   0.704   0.000  data_ready_out_mux00001 (data_ready_out_mux00001)
+     MUXF5:I1->O           1   0.321   0.000  data_ready_out_mux0000_f5 (data_ready_out_mux0000)
      FDC_1:D                   0.308          data_ready_out
     ----------------------------------------
     Total                      3.217ns (2.551ns logic, 0.666ns route)
@@ -556,59 +574,60 @@ Offset:              1.946ns (Levels of Logic = 1)
                                        (78.4% logic, 21.6% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'rdn_not'
-  Total number of paths / destination ports: 1 / 1
--------------------------------------------------------------------------
-Offset:              4.394ns (Levels of Logic = 1)
-  Source:            data_ready_out (FF)
-  Destination:       data_ready_out (PAD)
-  Source Clock:      rdn_not rising
-
-  Data Path: data_ready_out to data_ready_out
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDC_1:C->Q            3   0.591   0.531  data_ready_out (data_ready_out_OBUF)
-     OBUF:I->O                 3.272          data_ready_out_OBUF (data_ready_out)
-    ----------------------------------------
-    Total                      4.394ns (3.863ns logic, 0.531ns route)
-                                       (87.9% logic, 12.1% route)
-
-=========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'keyboard0/fok1'
-  Total number of paths / destination ports: 939 / 15
+  Total number of paths / destination ports: 858 / 25
 -------------------------------------------------------------------------
-Offset:              11.012ns (Levels of Logic = 6)
-  Source:            keyboard0/scancode_4 (LATCH)
+Offset:              11.844ns (Levels of Logic = 6)
+  Source:            keyboard0/scancode_0 (LATCH)
   Destination:       seg0<5> (PAD)
   Source Clock:      keyboard0/fok1 falling
 
-  Data Path: keyboard0/scancode_4 to seg0<5>
+  Data Path: keyboard0/scancode_0 to seg0<5>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              16   0.676   1.209  keyboard0/scancode_4 (keyboard0/scancode_4)
-     LUT3_L:I0->LO         1   0.704   0.104  keyboard_decoder0/kdata<0>99 (keyboard_decoder0/kdata<0>99)
-     LUT4:I3->O            1   0.704   0.455  keyboard_decoder0/kdata<0>100 (keyboard_decoder0/kdata<0>100)
-     LUT4:I2->O            1   0.704   0.424  keyboard_decoder0/kdata<0>199_SW0 (N37)
-     LUT4_D:I3->O          8   0.704   0.932  keyboard_decoder0/kdata<0>199 (kdata<0>)
-     LUT4:I0->O            1   0.704   0.420  seg_displayer0/Mrom_seg41 (seg0_4_OBUF)
+     LD:G->Q              14   0.676   1.175  keyboard0/scancode_0 (keyboard0/scancode_0)
+     LUT3_D:I0->O          2   0.704   0.482  keyboard_decoder0/kdata<1>31 (N15)
+     LUT3:I2->O            1   0.704   0.455  keyboard_decoder0/kdata<1>119 (keyboard_decoder0/kdata<1>119)
+     LUT4:I2->O           10   0.704   1.057  keyboard_decoder0/kdata<1>137 (N8)
+     LUT4:I0->O            7   0.704   0.787  keyboard_decoder0/kdata<2>154 (kdata<2>)
+     LUT4:I1->O            1   0.704   0.420  seg_displayer0/seg<4>1 (seg0_4_OBUF)
      OBUF:I->O                 3.272          seg0_4_OBUF (seg0<4>)
     ----------------------------------------
-    Total                     11.012ns (7.468ns logic, 3.544ns route)
-                                       (67.8% logic, 32.2% route)
+    Total                     11.844ns (7.468ns logic, 4.376ns route)
+                                       (63.1% logic, 36.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'rdn_not'
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Offset:              5.574ns (Levels of Logic = 2)
+  Source:            read_state_FSM_FFd1 (FF)
+  Destination:       r_state_debug<0> (PAD)
+  Source Clock:      rdn_not rising
+
+  Data Path: read_state_FSM_FFd1 to r_state_debug<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC_1:C->Q            4   0.591   0.587  read_state_FSM_FFd1 (read_state_FSM_FFd1)
+     INV:I->O              1   0.704   0.420  read_state_FSM_Out41_INV_0 (r_state_debug_0_OBUF)
+     OBUF:I->O                 3.272          r_state_debug_0_OBUF (r_state_debug<0>)
+    ----------------------------------------
+    Total                      5.574ns (4.567ns logic, 1.007ns route)
+                                       (81.9% logic, 18.1% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.13 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.07 secs
  
 --> 
 
-Total memory usage is 309868 kilobytes
+Total memory usage is 309836 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    1 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

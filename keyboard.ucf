@@ -18,13 +18,13 @@ NET "seg0[4]" LOC = G9;
 NET "seg0[5]" LOC = A10;
 NET "seg0[6]" LOC = B10;
 
-#NET "seg1[0]" LOC = C7;
-#NET "seg1[1]" LOC = D7;
-#NET "seg1[2]" LOC = E7;
-#NET "seg1[3]" LOC = F7;
-#NET "seg1[4]" LOC = A8;
-#NET "seg1[5]" LOC = E8;
-#NET "seg1[6]" LOC = F8;
+NET "seg1[0]" LOC = C7;
+NET "seg1[1]" LOC = D7;
+NET "seg1[2]" LOC = E7;
+NET "seg1[3]" LOC = F7;
+NET "seg1[4]" LOC = A8;
+NET "seg1[5]" LOC = E8;
+NET "seg1[6]" LOC = F8;
 
 
 #LED
@@ -39,13 +39,13 @@ NET "data_out[1]" LOC = E12;
 NET "data_out[0]" LOC = A12;
 
 #led [7:0]
-#NET "pc_test[7]" LOC = F11;
-#NET "pc_test[6]" LOC = E11;
-#NET "pc_test[5]" LOC = D11;
-#NET "pc_test[4]" LOC = C11;
-#NET "pc_test[3]" LOC = B11;
-#NET "rst_in_debug" LOC = A11;#2
-#NET "datain_debug" LOC = E10;#1
+#NET "pc_test[7]" LOC = F11; #7
+#NET "pc_test[6]" LOC = E11; #6
+NET "k_data_ready_out" LOC = D11; #5
+NET "r_state_debug[1]" LOC = C11; #4
+NET "r_state_debug[0]" LOC = B11; #3
+NET "k_state_debug[1]" LOC = A11;#2
+NET "k_state_debug[0]" LOC = E10;#1
 NET "data_ready_out" LOC = D10; #0
 
 

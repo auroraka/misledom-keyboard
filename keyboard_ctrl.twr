@@ -45,8 +45,8 @@ Setup/Hold to clock clk_50
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-k_clk       |    2.524(R)|   -0.788(R)|clk_50_BUFGP      |   0.000|
-k_data      |    2.379(R)|   -0.672(R)|clk_50_BUFGP      |   0.000|
+k_clk       |    1.938(R)|   -0.329(R)|clk_50_BUFGP      |   0.000|
+k_data      |    2.126(R)|   -0.480(R)|clk_50_BUFGP      |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Setup/Hold to clock rdn_not
@@ -54,23 +54,25 @@ Setup/Hold to clock rdn_not
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-addr        |    2.168(R)|    0.088(R)|rdn_not_BUFGP     |   0.000|
+addr        |    3.068(R)|   -0.904(R)|rdn_not_BUFGP     |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock rdn_not to Pad
---------------+------------+------------------+--------+
-              | clk (edge) |                  | Clock  |
-Destination   |   to PAD   |Internal Clock(s) | Phase  |
---------------+------------+------------------+--------+
-data_ready_out|    9.951(R)|rdn_not_BUFGP     |   0.000|
---------------+------------+------------------+--------+
+----------------+------------+------------------+--------+
+                | clk (edge) |                  | Clock  |
+Destination     |   to PAD   |Internal Clock(s) | Phase  |
+----------------+------------+------------------+--------+
+data_ready_out  |    9.154(R)|rdn_not_BUFGP     |   0.000|
+r_state_debug<0>|   10.325(R)|rdn_not_BUFGP     |   0.000|
+r_state_debug<1>|   10.100(R)|rdn_not_BUFGP     |   0.000|
+----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk_50
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_50         |    5.416|         |         |         |
+clk_50         |    5.294|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock rdn_not
@@ -78,18 +80,18 @@ Clock to Setup on destination clock rdn_not
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-rdn_not        |    2.220|         |         |         |
+rdn_not        |    2.431|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Sun Nov 27 23:48:49 2016 
+Analysis completed Mon Nov 28 01:38:45 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 202 MB
+Peak Memory Usage: 203 MB
 
 
 
